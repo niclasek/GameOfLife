@@ -38,3 +38,5 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Using mysql as database
+gem 'mysql'
