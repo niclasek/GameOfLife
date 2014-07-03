@@ -2,7 +2,7 @@ class GameController < ApplicationController
   def start
     # m = rows
     # n = columns
-    m,n = 5,5
+    m,n = 30,30
     new_cell = Proc.new {
       if rand(2) == 0
         Cell.new(:alive => true)
@@ -12,6 +12,9 @@ class GameController < ApplicationController
     }
     @grid = Array.new(m) { Array.new(n, &new_cell) }
     @grid.each {|a| a.each { |mn| puts mn.alive } }
+
+    plus_one = Proc.new { |n| n +1 }
+    @nr_grid = Array.new(m) { Array.new(n, &plus_one) }
 
 
     # Testing

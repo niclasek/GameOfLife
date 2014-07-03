@@ -1,2 +1,54 @@
-<h1>Game#start</h1>
+<!--
+<h1 id="start-header">Game#start</h1>
 <p>Find me in app/views/game/start.html.erb</p>
+<span id="click">KLICKA HÄR!</span>
+-->
+
+
+
+<!--<div class="grid ">
+    <% for m in 0...@grid.length %>
+      <div class="cell">
+          <% for n in 0...@grid[m].length %>
+            <%= @grid[m][n].alive %>
+          <% end %>
+      </div>
+    <% end %>
+
+</div>-->
+<table>
+    <% for m in 0...@grid.length %>
+    <tr>
+        <% for n in 0...@grid[m].length %>
+          <td> <%= @grid[m][n].alive %> </td>
+        <% end %>
+    </tr>
+    <% end %>
+</table>
+
+
+
+
+
+
+<!--
+<div class="grid ">
+    <% for m in 0...@nr_grid.length %>
+      <div class="cell">
+          <% for n in 0...@nr_grid[m].length %>
+            <%= @nr_grid[m][n] %>
+          <% end %>
+      </div>
+    <% end %>
+
+</div>
+
+<div class="grid">
+    <% @nr_grid.each {|a| a.each { |mn| %>
+
+        <div class="cell"> <%= mn %> </div>
+
+      <% } } %>
+
+</div>
+-->
