@@ -1,12 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-alive:
-  alive: true
-  m: 1
-  n: 1
+one:
+  name: rut
 
-dead:
-  alive: false
-  m: 2
-  n: 1
-
+two:
+  name: rutigt

@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702140349) do
+ActiveRecord::Schema.define(version: 20140704121623) do
 
   create_table "cells", force: true do |t|
-    t.boolean  "alive",      null: false
+    t.boolean  "alive"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "m",          null: false
+    t.integer  "n",          null: false
+    t.integer  "grid_id"
+  end
+
+  create_table "grids", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

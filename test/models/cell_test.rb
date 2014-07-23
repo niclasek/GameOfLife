@@ -16,14 +16,16 @@ class CellTest < ActiveSupport::TestCase
     assert_not cell.save, "Cell with alive null should not be able to be saved"
   end
 
-  test "Should not save cell without alive set" do
+  test "Should not save cell without alive, m and n set" do
     cell = Cell.new
-    assert_not cell.save, "Cell with alive null should not be able to be saved"
+    assert_not cell.save, "Cell with alive,m and n null should not be able to be saved"
   end
 
   test "Should save cell with alive set" do
     cell = Cell.new
     cell.alive=true
+    cell.m=5
+    cell.n=5
     assert cell.save, "Cell with alive set should be able to be saved"
   end
 

@@ -1,3 +1,5 @@
 class Cell < ActiveRecord::Base
-  validates :alive, :presence => true
+  belongs_to :grid
+  validates :m, :n, :presence => true
+
 end

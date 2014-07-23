@@ -1,2 +1,15 @@
-<h1>Game#next</h1>
-<p>Find me in app/views/game/next.html.erb</p>
+<table>
+    <% $m.times { |i| %>
+      <tr>
+          <%  $n.times { |j| %>
+            <% if Cell.where(grid_id: @grid_hallon.id, m: i, n:j).first.alive  %>
+              <td class="alive"> </td>
+            <% else %>
+              <td class="dead"> </td>
+            <% end %>
+          <% } %>
+      </tr>
+    <% } %>
+</table>
+<%= link_to "Next", game_next_path %>
+<%= link_to "Start", game_start_path %>

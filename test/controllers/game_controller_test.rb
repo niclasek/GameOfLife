@@ -4,7 +4,7 @@ class GameControllerTest < ActionController::TestCase
   test "should get start" do
     get :start
     assert_response :success
-    assert_not_nil assigns(:grid)
+    assert_not_nil assigns(:grid_hallon)
   end
 
   test "should get next" do
