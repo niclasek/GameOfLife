@@ -2,11 +2,11 @@
     <% $m.times { |i| %>
       <tr>
           <%  $n.times { |j| %>
-            <% if Cell.where(grid_id: @grid_hallon.id, m: i, n:j).first.alive  %>
+            <%  if  @grid_hash.cells[i.to_s + " " + j.to_s] == 1  %>
               <td class="alive"> </td>
-            <% else %>
+            <%  else %>
               <td class="dead"> </td>
-            <% end %>
+            <%  end %>
           <% } %>
       </tr>
     <% } %>

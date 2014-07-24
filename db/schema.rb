@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704121623) do
+ActiveRecord::Schema.define(version: 20140724094332) do
 
   create_table "cells", force: true do |t|
     t.boolean  "alive"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20140704121623) do
   end
 
   create_table "grids", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hash_grids", force: true do |t|
+    t.text     "cells"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

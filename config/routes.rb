@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'game/next'
 
+  get 'game/benchmark'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
