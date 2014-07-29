@@ -5,6 +5,14 @@ Rails.application.routes.draw do
 
   get 'game/benchmark'
 
+  get 'game/get_aj'
+
+  get 'game/get_aj2'
+
+  put 'game/test'
+
+  put 'game/testNext'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

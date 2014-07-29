@@ -2,8 +2,8 @@ class GameController < ApplicationController
 
   require 'benchmark'
 
-  $m = 25
-  $n = 50
+  $m = 15
+  $n = 15
   def start
 
     Benchmark.bm(7) do |x|
@@ -14,7 +14,7 @@ class GameController < ApplicationController
 
         $m.times { |i|
           $n.times { |j|
-            if rand(8) == 0
+            if rand(8) == 13
               @grid_hash.cells[i.to_s + " " + j.to_s] = 1
             else
               @grid_hash.cells[i.to_s + " " + j.to_s] = 0
@@ -33,7 +33,7 @@ class GameController < ApplicationController
       x.report("Taking a step:")   {
         @grid_hash = HashGrid.where(name: 'smultron').last
         temp_hash = @grid_hash.cells.dup
-        
+
         $m.times { |i|
           $n.times { |j|
 
@@ -73,6 +73,44 @@ class GameController < ApplicationController
   end
 
   def benchmark
+    def get_aj
+      data = {:message => "Alert this!"}
+      render :json => data, :status => :ok
+
+    end
+
+    def get_aj2
+      @grid_hash = HashGrid.new(:name => "smultron")
+      @grid_hash.cells = Hash.new
+
+      $m.times { |i|
+        $n.times { |j|
+          if rand(2) == 0
+            @grid_hash.cells[i.to_s + " " + j.to_s] = 1
+          else
+            @grid_hash.cells[i.to_s + " " + j.to_s] = 0
+          end
+        }
+      }
+      @grid_hash.save
+
+      data2 = @grid_hash.cells
+      render :json => data2, :status => :ok
+
+    end
+
+  end
+
+  def test
+    @grid_hash = HashGrid.where(name: 'smultron').last
+    temp_hash = Hash.new
+    temp_hash = params[:game]
+    temp_hash.each do |key, value|
+      @grid_hash.cells[key] = temp_hash[key]
+    end
+    @grid_hash.save
+    puts params
+
   end
 
 

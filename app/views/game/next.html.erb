@@ -1,15 +1,71 @@
-<table>
-    <% $m.times { |i| %>
-      <tr>
-          <%  $n.times { |j| %>
-            <% if @grid_hash.cells[i.to_s + " " + j.to_s] == 1  %>
-              <td class="alive"> </td>
-            <% else %>
-              <td class="dead"> </td>
-            <% end %>
-          <% } %>
-      </tr>
-    <% } %>
-</table>
-<%= link_to "Next", game_next_path %>
-<%= link_to "Start", game_start_path %>
+<%= content_tag :div, class: "grid_information", data: {m: $m, n: $n, gh: @grid_hash.cells} do %>
+<% end %>
+
+<a href="http://localhost:3000/game/next" id="next-button">Next</a>
+
+<%= link_to "Start", game_start_path, :id => "next-button" %>
+
+<script type="text/javascript">
+  var m = $('.grid_information').data('m');
+  var n = $('.grid_information').data('n');
+  var GHCells = $('.grid_information').data('gh');
+  //document.write(GHCells['0 0'])
+  //document.write("somethinganything")
+  var HashToPut = new Object();
+
+
+  var grid = clickableGrid(10,10,function(el,row,col){
+    if (el.className=='alive') {
+      el.className='dead';
+      HashToPut[row + " " + col] = 0;
+    } else {
+      el.className='alive';
+      HashToPut[row + " " + col] = 1;
+    }
+  });
+
+  document.body.appendChild(grid);
+
+  function clickableGrid(rows, cols, callback){
+    var grid = document.createElement('table');
+    grid.className = 'grid';
+    for (var r=0;r<m;++r) {
+      var tr = grid.appendChild(document.createElement('tr'));
+      for (var c = 0; c < n; ++c) {
+        var cell = tr.appendChild(document.createElement('td'));
+        if (GHCells[r + " " + c] == 1) {
+          cell.className='alive';
+        } else {
+          cell.className='dead';
+        }
+        cell.addEventListener('click',(function(el,r,c){
+          return function(){
+            callback(el,r,c);
+          }
+        })(cell,r,c),false);
+      }
+    }
+    return grid;
+  }
+
+</script>
+<script type="text/javascript">
+  $('#next-button').click(function(event){
+    //event.preventDefault();
+    $.ajax({
+      type: 'PUT',
+      url: "/game/test",
+      data: JSON.stringify(HashToPut),
+      contentType: "application/json",
+      success: function(result) {
+        //alert("success?");
+      },
+      error: function(xhr,status,error){
+        console.log(xhr);
+        document.write(error);
+      }
+    });
+  });
+
+</script>
+

@@ -2,16 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-td {
-  outline: 1px solid;
-  width: 30px;
-  height: 30px;
+
+
+.grid {
+  margin:1em auto;
+  border-collapse:collapse
 }
 
-.alive {
-  background-color: red;
+.grid td {
+  cursor:pointer;
+  width:30px; height:30px;
+  border:1px solid #ccc;
 }
 
-.dead {
-  background-color: white;
+.grid td.alive {
+  background-color:red;
+}
+
+.grid td.dead {
+  background-color:white;
 }
