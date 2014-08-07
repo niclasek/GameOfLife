@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   put 'game/put_user_input'
 
+  get 'game/get_partial'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -2,13 +2,15 @@
  * Created by nek on 2014-07-29.
  */
 
-
 var HashToPut = new Object();
 
-var doOnLoad = function() {
+var loadGrid = function() {
+    $('.grid').remove();
+
     var m = $('.grid_information').data('m');
     var n = $('.grid_information').data('n');
     var GHCells = $('.grid_information').data('gh');
+    //var GHCells = @grid_hash.cells;
     var grid;
 
     grid = clickableGrid(m,n,function(el,row,col){
@@ -47,5 +49,5 @@ var doOnLoad = function() {
 
 };
 
-$(document).ready(doOnLoad);
-$(document).on('page:load', doOnLoad);
+$(document).ready(loadGrid);
+$(document).on('page:load', loadGrid);
