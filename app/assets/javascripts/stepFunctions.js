@@ -27,7 +27,7 @@ var cycle = function() {
             console.log("get-partial-cycle-success");
             $("#grid-container").html(result);
             loadGrid();
-            timer = setTimeout(saveAndCycle, 2000);
+            timer = setTimeout(saveAndCycle, 100);
         },
         error: function(xhr,status,error){
             console.log(xhr);

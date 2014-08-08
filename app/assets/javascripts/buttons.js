@@ -19,25 +19,6 @@ var loadButtons = function() {
         event.preventDefault();
     });
 
-    $('#take-a-step-redirect-button').click(function(event){
-        event.preventDefault();
-        $.ajax({
-            type: 'PUT',
-            url: "/game/put_user_input",
-            data: JSON.stringify(HashToPut),
-            contentType: "application/json",
-            success: function(result) {
-                console.log("next-button-success")
-                window.location.replace("/game/next");
-            },
-            error: function(xhr,status,error){
-                console.log(xhr);
-                document.write(error);
-            }
-        });
-
-    });
-
     $('#save-button').click(function(event){
         event.preventDefault();
         save();

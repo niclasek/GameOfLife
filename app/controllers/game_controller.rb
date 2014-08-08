@@ -2,16 +2,17 @@ class GameController < ApplicationController
 
   require 'benchmark'
 
-  $m = 25
-  $n = 25
+  $m = 35
+  $n = 45
   def start
 
     @grid_hash = HashGrid.new(:name => "smultron")
+    # @grid_hash = HashGrid.where(name: 'smultron').last
     @grid_hash.cells = Hash.new
 
     $m.times { |i|
       $n.times { |j|
-        if rand(8) == 12
+        if rand(8) == 1
           @grid_hash.cells[i.to_s + " " + j.to_s] = 1
         else
           @grid_hash.cells[i.to_s + " " + j.to_s] = 0
